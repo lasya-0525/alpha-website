@@ -7,6 +7,10 @@ import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
 export function DirectionAwareHoverDemo() {
   const [currentImage, setCurrentImage] = useState(0);
   const images = ["/hero-1.JPG", "/hero-2.JPG"];
+  const captions = [
+    "WHERE VISIONARIES ALIGN GLOBALLY.",
+    "GLOBAL GROUND FOR VISIONARY MINDS."
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -32,12 +36,9 @@ export function DirectionAwareHoverDemo() {
             className="h-full w-full rounded-none"
             childrenClassName="text-white"
           >
-            <div className="flex flex-col">
-              <p className="font-bold text-4xl md:text-6xl leading-tight">
-                GLOBAL GROUND FOR
-              </p>
-              <p className="font-bold text-4xl md:text-6xl leading-tight">
-                VISIONARY MINDS
+            <div className="flex flex-col items-center justify-center text-center w-full max-w-full px-4">
+              <p className="font-bodoni font-bold text-4xl md:text-6xl lg:text-7xl leading-tight text-center whitespace-normal break-words">
+                {captions[currentImage]}
               </p>
             </div>
           </DirectionAwareHover>

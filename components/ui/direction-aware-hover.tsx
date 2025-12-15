@@ -103,7 +103,7 @@ export const DirectionAwareHover = ({
               ease: "easeOut",
             }}
             className={cn(
-              "text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 text-center",
+              "text-white absolute inset-0 z-40 flex items-center justify-center pointer-events-none",
               childrenClassName
             )}
           >
@@ -141,27 +141,31 @@ const textVariants = {
   initial: {
     y: 0,
     x: 0,
-    opacity: 0,
+    opacity: 1,
   },
   exit: {
     y: 0,
     x: 0,
-    opacity: 0,
+    opacity: 1,
   },
   top: {
-    y: -20,
+    y: 0,
+    x: 0,
     opacity: 1,
   },
   bottom: {
-    y: 2,
+    y: 0,
+    x: 0,
     opacity: 1,
   },
   left: {
-    x: -2,
+    x: 0,
+    y: 0,
     opacity: 1,
   },
   right: {
-    x: 20,
+    x: 0,
+    y: 0,
     opacity: 1,
   },
 };
