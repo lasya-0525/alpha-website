@@ -24,12 +24,12 @@ export function FounderSection() {
   return (
     <section 
       ref={sectionRef}
-      className="min-h-screen w-full flex items-center justify-center bg-white py-20 px-4 md:px-8 lg:px-16"
+      className="min-h-screen w-full flex items-center justify-center bg-white py-20 px-4 md:px-8 lg:px-16 overflow-hidden"
     >
-      <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
         {/* Left Section - Text Content */}
         <motion.div 
-          className="flex flex-col space-y-6"
+          className="flex flex-col space-y-6 -mt-8 lg:-mt-12"
           style={{ y: textY, opacity: textOpacity }}
         >
           {/* Small red heading */}
@@ -64,11 +64,11 @@ export function FounderSection() {
 
         {/* Right Section - 3D Card with Founder Image */}
         <motion.div 
-          className="flex justify-center lg:justify-end"
+          className="flex justify-center lg:justify-start -mt-12 lg:-mt-8 lg:ml-24"
           style={{ y: imageY, opacity: imageOpacity, scale: imageScale }}
         >
           <CardContainer className="inter-var">
-            <CardBody className="bg-transparent relative group/card w-full max-w-md h-auto rounded-xl border-none">
+            <CardBody className="bg-transparent relative group/card w-full max-w-sm md:max-w-md h-auto rounded-xl border-none">
               <CardItem
                 translateZ="100"
                 className="w-full"
@@ -77,7 +77,7 @@ export function FounderSection() {
                   src={founderImageUrl}
                   height="1000"
                   width="1000"
-                  className="w-full h-auto object-cover rounded-xl group-hover/card:shadow-xl"
+                  className="w-full h-auto max-h-[70vh] object-cover rounded-xl group-hover/card:shadow-xl"
                   alt="Dr. Pulluri Srikanth - Founder, The Alpha Circle"
                 />
               </CardItem>

@@ -8,8 +8,8 @@ export function DirectionAwareHoverDemo() {
   const [currentImage, setCurrentImage] = useState(0);
   const images = ["/hero-1.JPG", "/hero-2.JPG"];
   const captions = [
-    "WHERE VISIONARIES ALIGN GLOBALLY.",
-    "GLOBAL GROUND FOR VISIONARY MINDS."
+    { line1: "WHERE VISIONARIES", line2: "ALIGN GLOBALLY." },
+    { line1: "GLOBAL GROUND FOR", line2: "VISIONARY MINDS." }
   ];
   
   const containerRef = useRef<HTMLDivElement>(null);
@@ -56,8 +56,10 @@ export function DirectionAwareHoverDemo() {
               className="flex flex-col items-center justify-center text-center w-full max-w-full px-4"
               style={{ y: textY, opacity: textOpacity }}
             >
-              <p className="font-bodoni font-bold text-4xl md:text-6xl lg:text-7xl leading-tight text-center whitespace-normal break-words">
-                {captions[currentImage]}
+              <p className="font-bodoni font-bold text-4xl md:text-6xl lg:text-7xl leading-tight text-center">
+                {captions[currentImage].line1}
+                <br />
+                {captions[currentImage].line2}
               </p>
             </motion.div>
           </DirectionAwareHover>
