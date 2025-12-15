@@ -1,11 +1,12 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 
 export function WhoWeAreSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [hasScrollLocked, setHasScrollLocked] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -20,6 +21,41 @@ export function WhoWeAreSection() {
   const rightY = useTransform(scrollYProgress, [0, 1], [250, 0]);
   const rightOpacity = useTransform(scrollYProgress, [0, 0.25, 0.5, 1], [0, 0.4, 1, 1]);
   const rightScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.75, 1, 1]);
+
+  // Scroll lock: when this section comes fully into view, briefly lock scroll
+  // to let the content animate in, then smoothly scroll to the next section.
+  useEffect(() => {
+    const sectionEl = sectionRef.current;
+    if (!sectionEl || hasScrollLocked) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (!entry.isIntersecting || entry.intersectionRatio < 0.9) return;
+
+        setHasScrollLocked(true);
+
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+
+        const nextSection = sectionEl.nextElementSibling as HTMLElement | null;
+
+        // Allow the internal drop-down / fade-in animations to play
+        setTimeout(() => {
+          if (nextSection) {
+            nextSection.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+          document.body.style.overflow = previousOverflow;
+        }, 1400);
+      },
+      {
+        threshold: 0.9,
+      }
+    );
+
+    observer.observe(sectionEl);
+    return () => observer.disconnect();
+  }, [hasScrollLocked]);
 
   const alphaItems = [
     {
