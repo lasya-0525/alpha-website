@@ -133,6 +133,19 @@ export function AlphaAdvantageMarquee() {
           <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-white to-transparent" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-white to-transparent" />
         </div>
+
+        {/* Embedded Instagram reel */}
+        <div className="mt-10 flex justify-center">
+          <div className="w-full max-w-3xl overflow-hidden rounded-xl border border-neutral-200 shadow-sm bg-white">
+            <iframe
+              src="https://www.instagram.com/reel/DIBx9-fSoIv/embed"
+              allowTransparency
+              allow="encrypted-media; clipboard-write"
+              scrolling="no"
+              className="w-full h-[700px]"
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
