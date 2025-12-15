@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
 
 export function DirectionAwareHoverDemo() {
@@ -11,6 +11,21 @@ export function DirectionAwareHoverDemo() {
     "WHERE VISIONARIES ALIGN GLOBALLY.",
     "GLOBAL GROUND FOR VISIONARY MINDS."
   ];
+  
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Parallax effect for background image
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0]);
+  
+  // Parallax effect for text (moves slower)
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.3, 0.7], [1, 1, 0]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -21,7 +36,7 @@ export function DirectionAwareHoverDemo() {
   }, [images.length]);
 
   return (
-    <div className="h-screen w-screen relative overflow-hidden">
+    <div ref={containerRef} className="h-screen w-screen relative overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentImage}
@@ -30,17 +45,21 @@ export function DirectionAwareHoverDemo() {
           exit={{ opacity: 0, scale: 0.95 }}
           transition={{ duration: 1.2, ease: "easeInOut" }}
           className="absolute inset-0"
+          style={{ y, opacity }}
         >
           <DirectionAwareHover
             imageUrl={images[currentImage]}
             className="h-full w-full rounded-none"
             childrenClassName="text-white"
           >
-            <div className="flex flex-col items-center justify-center text-center w-full max-w-full px-4">
+            <motion.div 
+              className="flex flex-col items-center justify-center text-center w-full max-w-full px-4"
+              style={{ y: textY, opacity: textOpacity }}
+            >
               <p className="font-bodoni font-bold text-4xl md:text-6xl lg:text-7xl leading-tight text-center whitespace-normal break-words">
                 {captions[currentImage]}
               </p>
-            </div>
+            </motion.div>
           </DirectionAwareHover>
         </motion.div>
       </AnimatePresence>
