@@ -3,6 +3,7 @@ import { FounderSection } from "./homepage/components/FounderSection";
 import { WhoWeAreSection } from "./homepage/components/WhoWeAreSection";
 import { AlphaCircleMaskSection } from "./homepage/components/AlphaCircleMaskSection";
 import { AlphaAdvantageMarquee } from "./homepage/components/AlphaAdvantageMarquee";
+import { AlphaPillarsHover } from "./homepage/components/AlphaPillarsHover";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <WhoWeAreSection />
       <AlphaCircleMaskSection />
       <AlphaAdvantageMarquee />
+      <AlphaPillarsHover />
     </main>
   );
 }
