@@ -52,7 +52,7 @@ export function FounderSection() {
             </h2>
             <h1 className="font-dm-serif text-5xl md:text-6xl lg:text-7xl text-gray-900 leading-[1.1] font-normal">
               Empowering <br className="hidden md:block"/>
-              <span className="italic text-gray-500 font-normal text-[2em] leading-[0.9]">Visionaries</span> Everywhere.
+              <span className="italic text-gray-500 font-normal text-[1em] leading-[0.9]">Visionaries</span> Everywhere.
             </h1>
           </div>
           <div className="font-dm-serif space-y-6 text-gray-600 text-lg leading-relaxed max-w-2xl border-l-2 border-[#af2324]/20 pl-6">
