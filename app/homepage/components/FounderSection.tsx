@@ -38,7 +38,7 @@ export function FounderSection() {
     <section 
       id="founder"
       ref={sectionRef}
-      className="min-h-screen w-full flex items-center justify-center bg-white py-10 px-4 md:px-8 lg:px-16 scroll-mt-24"
+      className="min-h-screen w-full flex items-center justify-center bg-white py-16 px-4 md:px-8 lg:px-16 overflow-hidden scroll-mt-24"
     >
       <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
         
@@ -47,33 +47,33 @@ export function FounderSection() {
           className="md:col-span-7 flex flex-col space-y-8 relative z-10"
           style={{ y: textY, opacity: textOpacity }}
         >
-          <div>
-            <h2 className="font-dm-serif text-[#af2324] text-sm font-bold tracking-[0.2em] uppercase mb-3 ml-1">
-              The Alpha Circle
+          <div className="space-y-4">
+            <h2 className="font-dm-serif text-[#af2324] text-sm font-bold tracking-[0.2em] uppercase">
+              THE ALPHA CIRCLE
             </h2>
-            <h1 className="font-dm-serif text-5xl md:text-6xl lg:text-7xl text-gray-900 leading-[1.1]">
-              Empowering <br/>
-              <span className="italic text-gray-500">Visionaries</span> Everywhere.
+            <h1 className="font-dm-serif text-5xl md:text-6xl lg:text-7xl text-gray-900 leading-[1.1] font-normal">
+              Empowering <br className="hidden md:block"/>
+              <span className="italic text-gray-500 font-normal">Visionaries</span> Everywhere.
             </h1>
           </div>
           <div className="font-dm-serif space-y-6 text-gray-600 text-lg leading-relaxed max-w-2xl border-l-2 border-[#af2324]/20 pl-6">
-            <p>
+            <p className="font-dm-serif">
               The Alpha Circle is an invite-only global industry leaders collective founded by Dr. Pulluri Srikanth. 
               We unite industrialists, business pioneers, and generational entrepreneurs who share a vision for 
               transformative leadership.
             </p>
-            <p>
+            <p className="font-dm-serif">
               With a strong presence across India and our international launch in Dubai, The Alpha Circle serves 
               as a platform for collaboration, innovation, and meaningful impact across industries and borders.
             </p>
           </div>
           {/* Founder Signature Block */}
           <div className="pt-4">
-            <p className="font-dm-serif text-gray-900 text-xl font-medium">
+            <p className="font-dm-serif text-gray-900 text-xl font-normal">
               Dr. Pulluri Srikanth
             </p>
-            <p className="font-dm-serif text-[#af2324] text-sm font-medium uppercase tracking-wide mt-1">
-              Founder, The Alpha Circle
+            <p className="font-dm-serif text-[#af2324] text-sm font-normal uppercase tracking-wide mt-1">
+              FOUNDER, THE ALPHA CIRCLE
             </p>
           </div>
         </motion.div>
