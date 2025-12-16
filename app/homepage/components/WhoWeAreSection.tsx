@@ -14,14 +14,14 @@ export function WhoWeAreSection() {
     offset: ["start end", "end start"],
   });
 
-  // More visible parallax effects - enter from below
-  const leftY = useTransform(scrollYProgress, [0, 1], [200, 0]);
-  const leftOpacity = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 0.5, 1, 1]);
-  const leftScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 1]);
+  // Subtle parallax without hiding content
+  const leftY = useTransform(scrollYProgress, [0, 1], [120, 0]);
+  const leftOpacity = 1;
+  const leftScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 1]);
   
-  const rightY = useTransform(scrollYProgress, [0, 1], [250, 0]);
-  const rightOpacity = useTransform(scrollYProgress, [0, 0.25, 0.5, 1], [0, 0.4, 1, 1]);
-  const rightScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.75, 1, 1]);
+  const rightY = useTransform(scrollYProgress, [0, 1], [140, 0]);
+  const rightOpacity = 1;
+  const rightScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 1]);
 
   // Scroll lock + scroll-controlled auto-open:
   // When this section is mostly in view, lock body scroll and
