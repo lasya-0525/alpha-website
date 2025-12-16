@@ -56,7 +56,7 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
     <div className="[perspective:1200px] [transform-style:preserve-3d]">
       <li
         ref={slideRef}
-        className="relative mx-[4vmin] flex h-[70vmin] w-[70vmin] flex-col items-center justify-center text-center text-white opacity-100 transition-all duration-300 ease-in-out"
+        className="relative mx-[4vmin] flex h-[65vh] max-h-[560px] w-[65vw] max-w-[860px] min-w-[320px] flex-col items-center justify-center text-center text-white opacity-100 transition-all duration-300 ease-in-out touch-pan-y"
         onClick={() => handleSlideClick(index)}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
@@ -153,13 +153,13 @@ export function AlphaCarousel({ slides }: CarouselProps) {
 
   return (
     <div
-      className="relative mx-auto h-[70vmin] w-[70vmin] max-w-4xl"
+      className="relative mx-auto h-[65vh] max-h-[560px] w-[65vw] max-w-4xl min-w-[320px]"
       aria-labelledby={`carousel-heading-${id}`}
     >
       <ul
-        className="absolute mx-[-4vmin] flex transition-transform duration-1000 ease-in-out"
+        className="absolute inset-0 mx-[-4vmin] flex transition-transform duration-600 ease-in-out touch-pan-y"
         style={{
-          transform: `translateX(-${current * (100 / slides.length)}%)`,
+          transform: `translateX(calc(-${current * 100}% - ${current * 8}vmin))`,
         }}
       >
         {slides.map((slide, index) => (

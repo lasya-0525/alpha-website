@@ -44,5 +44,14 @@ body {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Hide scrollbars across the site while preserving scroll functionality */
+* {
+  scrollbar-width: none; /* Firefox */
+}
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
 }
 
