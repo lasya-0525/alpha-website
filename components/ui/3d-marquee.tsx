@@ -60,6 +60,7 @@ export function ThreeDMarquee({
                 alt="Marquee item"
                 fill
                 className="object-cover"
+                style={{ objectPosition: "center" }}
                 sizes="(min-width: 1024px) 280px, (min-width: 768px) 240px, 200px"
                 unoptimized={src.startsWith("http")}
               />
