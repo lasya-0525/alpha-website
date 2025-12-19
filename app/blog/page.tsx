@@ -129,7 +129,7 @@ export default function BlogPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-4">
             <div className="flex items-center gap-4">
-              <Link href="/" className="text-2xl font-bold text-gray-900 hover:text-[#af2324] transition-colors">
+              <Link href="/" className="text-xl font-medium text-gray-900 hover:text-[#af2324] transition-colors">
                 The Alpha Circle
               </Link>
             </div>
@@ -181,7 +181,7 @@ export default function BlogPage() {
                           <span className="text-white text-xs font-bold">A</span>
                         </div>
                         <span className="text-base text-gray-600">
-                          In <span className="font-semibold">{filteredPosts[0].category}</span> by {filteredPosts[0].author}
+                              In <span className="font-medium">{filteredPosts[0].category}</span> by {filteredPosts[0].author}
                         </span>
                       </div>
 
@@ -198,12 +198,12 @@ export default function BlogPage() {
                       </div>
 
                       {/* Title */}
-                      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 group-hover:text-[#af2324] transition-colors leading-tight">
+                      <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium text-gray-900 mb-4 group-hover:text-[#af2324] transition-colors leading-tight">
                         {filteredPosts[0].title}
                       </h2>
 
                       {/* Excerpt */}
-                      <p className="text-lg md:text-xl text-gray-600 mb-4 leading-relaxed">
+                      <p className="text-base md:text-lg text-gray-600 mb-4 leading-relaxed">
                         {filteredPosts[0].excerpt}
                       </p>
 
@@ -234,12 +234,12 @@ export default function BlogPage() {
                               <span className="text-white text-xs font-bold">A</span>
                             </div>
                             <span className="text-sm text-gray-600">
-                              In <span className="font-semibold">{post.category}</span> by {post.author}
+                              In <span className="font-medium">{post.category}</span> by {post.author}
                             </span>
                           </div>
 
                           {/* Title */}
-                          <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#af2324] transition-colors leading-snug line-clamp-2">
+                          <h2 className="text-lg md:text-xl font-medium text-gray-900 mb-2 group-hover:text-[#af2324] transition-colors leading-snug line-clamp-2">
                             {post.title}
                           </h2>
 
@@ -313,7 +313,7 @@ export default function BlogPage() {
             <div className="sticky top-24 space-y-8">
               {/* Trending Section */}
               <div>
-                <h3 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">
+                <h3 className="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wide">
                   Trending on The Alpha Circle
                 </h3>
                 <div className="space-y-6">
@@ -333,7 +333,7 @@ export default function BlogPage() {
                           href={`/blog/${post.slug}`}
                           className="block group"
                         >
-                          <h4 className="text-sm font-bold text-gray-900 group-hover:text-[#af2324] transition-colors line-clamp-2 leading-snug">
+                          <h4 className="text-sm font-semibold text-gray-900 group-hover:text-[#af2324] transition-colors line-clamp-2 leading-snug">
                             {post.title}
                           </h4>
                         </Link>
@@ -348,7 +348,7 @@ export default function BlogPage() {
 
               {/* Recommended Topics */}
               <div>
-                <h3 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">
+                <h3 className="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wide">
                   Recommended topics
                 </h3>
                 <div className="flex flex-wrap gap-2">

@@ -167,7 +167,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 {post.category}
               </span>
             </div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-medium leading-tight mb-6">
               {post.title}
             </h1>
           </div>
@@ -181,13 +181,13 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             {/* Author Info */}
             <div className="flex items-center space-x-4 mb-8 pb-8 border-b border-gray-200">
               <div className="w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center">
-                <span className="text-gray-600 font-semibold">
+                <span className="text-gray-600 font-medium">
                   {post.author.charAt(0)}
                 </span>
               </div>
               <div>
-                <p className="font-semibold text-gray-900 text-base">{post.author}</p>
-                <p className="text-sm text-gray-500">
+                <p className="font-normal text-gray-900 text-sm">{post.author}</p>
+                <p className="text-xs text-gray-500">
                   {post.date} · {post.readTime}
                 </p>
               </div>
@@ -201,7 +201,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                   return (
                     <h2
                       key={index}
-                      className="text-[9.8px] font-bold text-gray-900 mt-10 mb-4 first:mt-0"
+                      className="text-[9.8px] font-medium text-gray-900 mt-10 mb-4 first:mt-0"
                     >
                       {paragraph.replace("## ", "")}
                     </h2>
@@ -212,7 +212,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                   return (
                     <h3
                       key={index}
-                      className="text-[8.82px] font-bold text-gray-900 mt-8 mb-3"
+                      className="text-[8.82px] font-medium text-gray-900 mt-8 mb-3"
                     >
                       {paragraph.replace("### ", "")}
                     </h3>
@@ -224,7 +224,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                   if (match) {
                     return (
                       <div key={index} className="my-5">
-                        <h3 className="text-[7.84px] font-bold text-gray-900 mb-2">
+                        <h3 className="text-[7.84px] font-medium text-gray-900 mb-2">
                           {match[1]}. {match[2]}
                         </h3>
                       </div>
@@ -268,10 +268,10 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             {/* CTA Section */}
             <div className="mt-12 pt-8 border-t border-gray-200">
               <div className="bg-gray-50 rounded-lg p-6 text-center">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-lg font-medium text-gray-900 mb-3">
                   Join The Alpha Circle
                 </h3>
-                <p className="text-base text-gray-600 mb-5 max-w-2xl mx-auto">
+                <p className="text-sm text-gray-600 mb-5 max-w-2xl mx-auto">
                   Become part of a community of ambitious entrepreneurs and leaders
                   who are shaping the future of business.
                 </p>

@@ -17,7 +17,7 @@ const navItems: NavItem[] = [
   { name: "Events", link: "/#events" },
   { name: "Gallery", link: "/gallery" },
   { name: "Membership", link: "/members" },
-  { name: "Blog", link: "/#blog" },
+  { name: "Blog", link: "/blog" },
   { name: "Contact Us", link: "/#contact" },
 ];
 

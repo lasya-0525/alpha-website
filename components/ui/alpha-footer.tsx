@@ -8,20 +8,20 @@ import { motion } from "framer-motion";
 export function AlphaFooter() {
   return (
     <footer className="relative w-full bg-black text-white z-[200] mt-auto" style={{ position: 'relative' }}>
-      <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+      <div className="max-w-7xl mx-auto px-6 py-6 md:py-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-4">
           {/* Brand Section */}
-          <div className="md:col-span-4 space-y-6">
+          <div className="md:col-span-4 space-y-2">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: 'DM Serif Display, serif' }}>
+              <h2 className="text-xl md:text-2xl font-bold mb-1.5" style={{ fontFamily: 'DM Serif Display, serif' }}>
                 The Alpha Circle
               </h2>
-              <p className="text-gray-400 text-sm md:text-base leading-relaxed max-w-md">
+              <p className="text-gray-400 text-xs leading-relaxed max-w-md">
                 The Alpha Circle, founded by Dr. Pulluri Srikanth, is an exclusive collective of industrialists, visionary entrepreneurs, legacy business leaders, and forward-thinking innovators who are actively shaping the future. Rooted in India and expanding globally with circles in Dubai and beyond.
               </p>
             </motion.div>
@@ -35,8 +35,8 @@ export function AlphaFooter() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h3 className="text-lg font-semibold mb-6 uppercase tracking-wider">Explore</h3>
-              <nav className="space-y-4">
+              <h3 className="text-sm font-semibold mb-2 uppercase tracking-wider">Explore</h3>
+              <nav className="space-y-1.5">
                 <Link 
                   href="/" 
                   className="block text-gray-400 hover:text-[#af2324] transition-colors duration-300"
@@ -68,7 +68,7 @@ export function AlphaFooter() {
                   Membership
                 </Link>
                 <Link 
-                  href="/#blog" 
+                  href="/blog" 
                   className="block text-gray-400 hover:text-[#af2324] transition-colors duration-300"
                 >
                   Blogs
@@ -91,29 +91,29 @@ export function AlphaFooter() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <h3 className="text-lg font-semibold mb-6 uppercase tracking-wider">Contact</h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <MapPin className="w-5 h-5 text-[#af2324] mt-1 shrink-0" />
+              <h3 className="text-base font-semibold mb-3 uppercase tracking-wider">Contact</h3>
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-[#af2324] mt-0.5 shrink-0" />
                   <p className="text-gray-400 text-sm leading-relaxed">
                     206 Buziness Square Building, Jubilee Enclave,<br />
                     Hi-Tech City Hyderabad - 500081.
                   </p>
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-[#af2324] shrink-0" />
                   <a 
                     href="tel:+919133383399" 
-                    className="text-gray-400 hover:text-[#af2324] transition-colors duration-300"
+                    className="text-gray-400 hover:text-[#af2324] transition-colors duration-300 text-sm"
                   >
                     91333 83399
                   </a>
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3">
                   <Mail className="w-5 h-5 text-[#af2324] shrink-0" />
                   <a 
                     href="mailto:admin@thealphacircle.world" 
-                    className="text-gray-400 hover:text-[#af2324] transition-colors duration-300 break-all"
+                    className="text-gray-400 hover:text-[#af2324] transition-colors duration-300 break-all text-sm"
                   >
                     admin@thealphacircle.world
                   </a>
@@ -129,15 +129,15 @@ export function AlphaFooter() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-12 pt-8 border-t border-gray-800"
+          className="mt-4 pt-3 border-t border-gray-800"
         >
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-500 text-sm text-center md:text-left">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-2">
+            <p className="text-gray-500 text-xs text-center md:text-left">
               © Copyright The Alpha Circle | All rights reserved.
             </p>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-[#af2324]"></div>
-              <span className="text-gray-500 text-sm">Built with purpose</span>
+              <div className="w-1.5 h-1.5 rounded-full bg-[#af2324]"></div>
+              <span className="text-gray-500 text-xs">Built with purpose</span>
             </div>
           </div>
         </motion.div>
