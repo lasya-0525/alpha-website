@@ -2,7 +2,8 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
-import { Quote, Sparkles, Network, TrendingUp, Globe, ArrowRight, Target, Users, Shield, Zap } from "lucide-react";
+import { Quote, Sparkles, Network, TrendingUp, ArrowRight, Target, Users, Shield, Zap } from "lucide-react";
+import Image from "next/image";
 
 // --- Utility Helper ---
 function cn(...classes: (string | undefined | null | false)[]) {
@@ -445,12 +446,12 @@ export default function AboutUsDotGridSection() {
                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#af2324] blur-[150px] opacity-20 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none translate-x-1/3 -translate-y-1/3" />
                
                <div className="relative z-10 flex flex-col md:flex-row gap-12 items-center justify-between">
-                  <div className="space-y-8 max-w-2xl">
-                    <h2 className="text-4xl md:text-7xl tracking-tight leading-none" style={{ fontFamily: 'DM Serif Display, serif' }}>
+                  <div className="space-y-8 max-w-2xl flex-1 min-w-0">
+                    <h2 className="text-4xl md:text-7xl tracking-tight leading-tight" style={{ fontFamily: 'DM Serif Display, serif' }}>
                         Join the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#af2324] to-[#ff4d4d]">Legacy</span>.
                     </h2>
                     <div className="space-y-4 text-gray-400 text-xl font-light">
-                      <p>
+                      <p className="break-words">
                         We believe that leadership, when united, can reshape industries and uplift economies.
                       </p>
                     </div>
@@ -459,10 +460,16 @@ export default function AboutUsDotGridSection() {
                     </button>
                   </div>
                   
-                  <div className="hidden md:flex items-center justify-center">
-                     <div className="w-40 h-40 rounded-full border border-white/10 flex items-center justify-center relative">
-                        <div className="absolute inset-0 border border-white/20 rounded-full animate-[ping_3s_ease-in-out_infinite] opacity-20" />
-                        <Globe className="text-white/80 w-16 h-16" />
+                  <div className="hidden md:flex items-center justify-center flex-shrink-0">
+                     <div className="w-[480px] h-[320px] flex items-center justify-center relative">
+                        <div className="relative w-full h-full">
+                          <Image
+                            src="/Visiting Card (2).png"
+                            alt="Alpha Circle Logo"
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
                      </div>
                   </div>
                </div>
