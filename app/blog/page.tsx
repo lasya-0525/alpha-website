@@ -115,110 +115,127 @@ const blogPosts: BlogPost[] = [
 
 export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   const filteredPosts = blogPosts.filter(
-    (post) =>
-      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
+    (post) => {
+      const searchLower = searchQuery.toLowerCase();
+      const matchesSearch = 
+        searchQuery === "" ||
+        post.title.toLowerCase().includes(searchLower) ||
+        post.excerpt.toLowerCase().includes(searchLower) ||
+        post.category.toLowerCase().includes(searchLower);
+      
+      const matchesCategory = selectedCategory === null || 
+        post.category.toLowerCase() === selectedCategory.toLowerCase();
+      
+      return matchesSearch && matchesCategory;
+    }
   );
+
+  const handleCategoryClick = (category: string) => {
+    if (selectedCategory === category.toLowerCase()) {
+      setSelectedCategory(null); // Deselect if already selected
+    } else {
+      setSelectedCategory(category.toLowerCase());
+    }
+  };
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Header Section - Medium Style */}
-      <div className="border-b border-gray-200 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between py-4">
-            <div className="flex items-center gap-4">
-              <Link href="/" className="text-xl font-medium text-gray-900 hover:text-[#af2324] transition-colors">
-                The Alpha Circle
-              </Link>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="relative hidden md:block">
-                <input
-                  type="text"
-                  placeholder="Search"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-64 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#af2324] focus:border-transparent text-sm"
-                />
-                <svg
-                  className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-              </div>
-              <button className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#af2324] transition-colors">
-                Write
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Blog Posts */}
           <div className="lg:col-span-2">
             <div className="space-y-8">
-              {/* Featured First Post - Larger */}
-              {filteredPosts.length > 0 && (
-                <article className="border-b border-gray-200 pb-8">
-                  <Link href={`/blog/${filteredPosts[0].slug}`}>
-                    <div className="group cursor-pointer">
-                      {/* Category/Publication */}
-                      <div className="mb-4 flex items-center gap-2">
-                        <div className="w-6 h-6 rounded-full bg-[#af2324] flex items-center justify-center">
-                          <span className="text-white text-xs font-bold">A</span>
+              {/* No Blogs Found Message */}
+              {filteredPosts.length === 0 ? (
+                <div className="text-center py-16">
+                  <div className="mb-4">
+                    <svg
+                      className="w-16 h-16 mx-auto text-gray-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+                    No blogs found
+                  </h3>
+                  <p className="text-gray-600 mb-6">
+                    {searchQuery || selectedCategory
+                      ? "Try adjusting your search or filter criteria."
+                      : "No blog posts available at the moment."}
+                  </p>
+                  {(searchQuery || selectedCategory) && (
+                    <button
+                      onClick={() => {
+                        setSearchQuery("");
+                        setSelectedCategory(null);
+                      }}
+                      className="px-6 py-2 bg-[#af2324] text-white rounded-lg hover:bg-[#af2324]/90 transition-colors"
+                    >
+                      Clear all filters
+                    </button>
+                  )}
+                </div>
+              ) : (
+                <>
+                  {/* Featured First Post - Larger */}
+                  <article className="border-b border-gray-200 pb-8">
+                    <Link href={`/blog/${filteredPosts[0].slug}`}>
+                      <div className="group cursor-pointer">
+                        {/* Category/Publication */}
+                        <div className="mb-4 flex items-center gap-2">
+                          <div className="w-6 h-6 rounded-full bg-[#af2324] flex items-center justify-center">
+                            <span className="text-white text-xs font-bold">A</span>
+                          </div>
+                          <span className="text-base text-gray-600">
+                                In <span className="font-medium">{filteredPosts[0].category}</span>
+                          </span>
                         </div>
-                        <span className="text-base text-gray-600">
-                              In <span className="font-medium">{filteredPosts[0].category}</span> by {filteredPosts[0].author}
-                        </span>
-                      </div>
 
-                      {/* Large Image */}
-                      <div className="mb-6 rounded-lg overflow-hidden">
-                        <div className="relative w-full h-64 md:h-96 lg:h-[500px]">
-                          <Image
-                            src={filteredPosts[0].image}
-                            alt={filteredPosts[0].title}
-                            fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-300"
-                          />
+                        {/* Large Image */}
+                        <div className="mb-6 rounded-lg overflow-hidden">
+                          <div className="relative w-full h-64 md:h-96 lg:h-[500px]">
+                            <Image
+                              src={filteredPosts[0].image}
+                              alt={filteredPosts[0].title}
+                              fill
+                              className="object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Title */}
+                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium text-gray-900 mb-4 group-hover:text-[#af2324] transition-colors leading-tight">
+                          {filteredPosts[0].title}
+                        </h2>
+
+                        {/* Excerpt */}
+                        <p className="text-base md:text-lg text-gray-600 mb-4 leading-relaxed">
+                          {filteredPosts[0].excerpt}
+                        </p>
+
+                        {/* Metadata */}
+                        <div className="flex items-center gap-6 text-base text-gray-500">
+                          <span>{filteredPosts[0].date}</span>
+                          <span>{filteredPosts[0].readTime}</span>
                         </div>
                       </div>
+                    </Link>
+                  </article>
 
-                      {/* Title */}
-                      <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium text-gray-900 mb-4 group-hover:text-[#af2324] transition-colors leading-tight">
-                        {filteredPosts[0].title}
-                      </h2>
-
-                      {/* Excerpt */}
-                      <p className="text-base md:text-lg text-gray-600 mb-4 leading-relaxed">
-                        {filteredPosts[0].excerpt}
-                      </p>
-
-                      {/* Metadata */}
-                      <div className="flex items-center gap-6 text-base text-gray-500">
-                        <span>{filteredPosts[0].date}</span>
-                        <span>{filteredPosts[0].readTime}</span>
-                      </div>
-                    </div>
-                  </Link>
-                </article>
-              )}
-
-              {/* Rest of the Posts - Regular Size */}
-              {filteredPosts.slice(1).map((post) => (
+                  {/* Rest of the Posts - Regular Size */}
+                  {filteredPosts.slice(1).map((post) => (
                 <article
                   key={post.slug}
                   className="border-b border-gray-200 pb-8 last:border-b-0"
@@ -234,7 +251,7 @@ export default function BlogPage() {
                               <span className="text-white text-xs font-bold">A</span>
                             </div>
                             <span className="text-sm text-gray-600">
-                              In <span className="font-medium">{post.category}</span> by {post.author}
+                              In <span className="font-medium">{post.category}</span>
                             </span>
                           </div>
 
@@ -304,7 +321,9 @@ export default function BlogPage() {
                     </div>
                   </Link>
                 </article>
-              ))}
+                  ))}
+                </>
+              )}
             </div>
           </div>
 
@@ -323,12 +342,6 @@ export default function BlogPage() {
                         {String(index + 1).padStart(2, "0")}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 mb-1">
-                          <div className="w-5 h-5 rounded-full bg-[#af2324] flex items-center justify-center">
-                            <span className="text-white text-xs font-bold">A</span>
-                          </div>
-                          <span className="text-xs text-gray-600">{post.author}</span>
-                        </div>
                         <Link
                           href={`/blog/${post.slug}`}
                           className="block group"
@@ -352,16 +365,31 @@ export default function BlogPage() {
                   Recommended topics
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {["Networking", "Entrepreneurship", "Leadership", "Community", "Innovation", "Business", "Growth"].map((topic) => (
-                    <Link
-                      key={topic}
-                      href={`/blog?category=${topic.toLowerCase()}`}
-                      className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full text-sm font-medium transition-colors"
-                    >
-                      {topic}
-                    </Link>
-                  ))}
+                  {["Networking", "Entrepreneurship", "Leadership", "Community", "Innovation", "Business", "Growth"].map((topic) => {
+                    const isActive = selectedCategory === topic.toLowerCase();
+                    return (
+                      <button
+                        key={topic}
+                        onClick={() => handleCategoryClick(topic)}
+                        className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                          isActive
+                            ? "bg-[#af2324] text-white hover:bg-[#af2324]/90"
+                            : "bg-gray-100 hover:bg-gray-200 text-gray-700"
+                        }`}
+                      >
+                        {topic}
+                      </button>
+                    );
+                  })}
                 </div>
+                {selectedCategory && (
+                  <button
+                    onClick={() => setSelectedCategory(null)}
+                    className="mt-3 text-sm text-[#af2324] hover:underline"
+                  >
+                    Clear filter
+                  </button>
+                )}
               </div>
             </div>
           </aside>
